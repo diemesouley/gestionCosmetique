@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{form_start(c)}}
+    {{form_widget(c)}}
+    {{form_end(c)}}
+
+    <table class="table table_condensed">
+
+        <thead>
+            <th>Id</th><th>Libelle</th><th>actions</th>
+        </thead>    
+    {% for cat in cats %}
+
+        <tr>
+            <td>{{cat.id}}</td>
+            <td>{{cat.libelle}}</td>
+            <td><button type="button" class="btn btn-warning">Modifier</button></td>
+            <td class="col-md-1"><a href="{{path('categorie_del', 
+            {'id': cat.id}) }}"
+             class="btn btn-danger">Supprimer</a></td>
+        </tr>
+
+    {% endfor %}
+    </table>
+{% endblock %}
